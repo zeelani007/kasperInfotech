@@ -1,0 +1,125 @@
+{
+  "user": [
+    {
+      "id": "afrozzeelani",
+      "name": "afroz",
+      "password": "Zeelani@123",
+      "email": "test@test.com",
+      "gender": "male",
+      "role": "admin",
+      "isactive": true,
+      "address": {
+        "area": "noida"
+      }
+    },
+    {
+      "id": "amar1",
+      "name": "amar",
+      "password": "Test@1234",
+      "email": "test@test.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    },
+    {
+      "id": "kasperinfotech",
+      "name": "kasper",
+      "password": "Test@1234",
+      "email": "test@gmail.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    },
+    {
+      "id": "afroz",
+      "name": "afroz",
+      "password": "Zeelani@123",
+      "email": "test@gmail.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    },
+    {
+      "id": "kasper",
+      "name": "kasper",
+      "password": "Test@1234",
+      "email": "kasper@test.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    },
+    {
+      "id": "kasper12",
+      "name": "Kasper",
+      "password": "Test@1234",
+      "email": "test@test.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    },
+    {
+      "id": "arjun",
+      "name": "arjan kumar",
+      "password": "Test@1233",
+      "email": "test@gmail.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    }
+  ],
+  "role": [
+    {
+      "code": "user",
+      "name": "User"
+    },
+    {
+      "code": "tech",
+      "name": "Technician"
+    },
+    {
+      "role": "admin",
+      "menu": "Admin"
+    }
+  ],
+  "menu": [
+    {
+      "code": "user",
+      "name": "User"
+    },
+    {
+      "code": "customer",
+      "name": "Customer"
+    }
+  ],
+  "roleaccess": [
+    {
+      "role": "admin",
+      "menu": "user",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true
+    },
+    {
+      "role": "admin",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true
+    },
+    {
+      "role": "user",
+      "menu": "user",
+      "haveedit": false,
+      "haveadd": false,
+      "havedelete": false
+    },
+    {
+      "role": "user",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": false
+    }
+  ],
+  "customer": []
+}
