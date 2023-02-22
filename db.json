@@ -18,7 +18,7 @@
       "password": "Test@1234",
       "email": "test@test.com",
       "gender": "male",
-      "role": "user",
+      "role": "",
       "isactive": true
     },
     {
@@ -65,6 +65,24 @@
       "gender": "male",
       "role": "user",
       "isactive": true
+    },
+    {
+      "id": "afroz123",
+      "name": "afr",
+      "password": "Afroz@123",
+      "email": "afroz@gmail.com",
+      "gender": "male",
+      "role": "",
+      "isactive": false
+    },
+    {
+      "id": "afroz11111",
+      "name": "afroz",
+      "password": "Zeelani@123",
+      "email": "asd@gmail.com",
+      "gender": "male",
+      "role": "",
+      "isactive": false
     }
   ],
   "role": [
@@ -121,5 +139,29 @@
       "havedelete": false
     }
   ],
-  "customer": []
+  "leave": [
+    {
+      "id": "afroz123",
+      "name": "afr",
+      "password": "Afroz@123",
+      "email": "afroz@gmail.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    }
+  ],
+  "role2": [
+    {
+      "code": "user",
+      "name": "User"
+    },
+    {
+      "code": "tech",
+      "name": "Technician"
+    },
+    {
+      "role": "admin",
+      "menu": "Admin"
+    }
+  ],
 }

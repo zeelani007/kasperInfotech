@@ -9,6 +9,9 @@ import { UserComponent } from './user/user.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
+import { LeaveComponent } from './leave/leave.component';
+import { LeavelistComponent } from './leavelist/leavelist.component';
+import { LeavepopupComponent } from './leavepopup/leavepopup.component';
 
 const routes: Routes = [
  {component:LoginComponent,path:'login'},
@@ -20,6 +23,8 @@ const routes: Routes = [
  {component:ProductComponent,path:'customer',canActivate:[AuthGuard]},
  {component:ProductComponent,path:'product'},
  {component:CartComponent,path:'cart'},
+ {component:LeaveComponent,path:'leave',canActivate:[AuthGuard]},
+ {component:LeavelistComponent,path:'leaveUser',canActivate:[AuthGuard]},
 
 //  {path:'products', component: ProductComponent},
 

@@ -30,6 +30,11 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { FilterPipe } from './shared/filter.pipe';
 import { HeaderComponent } from './header/header.component';
+import { LeaveComponent } from './leave/leave.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { LeavelistComponent } from './leavelist/leavelist.component';
+import { LeavepopupComponent } from './leavepopup/leavepopup.component';
+
 
 
 @NgModule({
@@ -45,7 +50,10 @@ import { HeaderComponent } from './header/header.component';
     SidenavComponent,
     ProductComponent,
     CartComponent,
-    FilterPipe
+    FilterPipe,
+    LeaveComponent,
+    LeavelistComponent,
+    LeavepopupComponent
    
 
     // DashboardComponent,
@@ -68,6 +76,7 @@ import { HeaderComponent } from './header/header.component';
     MatProgressBarModule,
     NgChartsModule,
     FormsModule,
+    MatDatepickerModule,
     ToastrModule.forRoot()
   ],
   providers: [],

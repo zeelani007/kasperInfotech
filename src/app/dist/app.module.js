@@ -36,6 +36,8 @@ var product_component_1 = require("./product/product.component");
 var cart_component_1 = require("./cart/cart.component");
 var filter_pipe_1 = require("./shared/filter.pipe");
 var header_component_1 = require("./header/header.component");
+var leave_component_1 = require("./leave/leave.component");
+var datepicker_1 = require("@angular/material/datepicker");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -53,7 +55,8 @@ var AppModule = /** @class */ (function () {
                 sidenav_component_1.SidenavComponent,
                 product_component_1.ProductComponent,
                 cart_component_1.CartComponent,
-                filter_pipe_1.FilterPipe
+                filter_pipe_1.FilterPipe,
+                leave_component_1.LeaveComponent
                 // DashboardComponent,
             ],
             imports: [
@@ -73,6 +76,7 @@ var AppModule = /** @class */ (function () {
                 progress_bar_1.MatProgressBarModule,
                 ng2_charts_1.NgChartsModule,
                 forms_1.FormsModule,
+                datepicker_1.MatDatepickerModule,
                 ngx_toastr_1.ToastrModule.forRoot()
             ],
             providers: [],

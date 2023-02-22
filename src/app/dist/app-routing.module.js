@@ -17,6 +17,8 @@ var user_component_1 = require("./user/user.component");
 var sidenav_component_1 = require("./sidenav/sidenav.component");
 var product_component_1 = require("./product/product.component");
 var cart_component_1 = require("./cart/cart.component");
+var leave_component_1 = require("./leave/leave.component");
+var leavelist_component_1 = require("./leavelist/leavelist.component");
 var routes = [
     { component: login_component_1.LoginComponent, path: 'login' },
     { component: register_component_1.RegisterComponent, path: 'register' },
@@ -27,6 +29,8 @@ var routes = [
     { component: product_component_1.ProductComponent, path: 'customer', canActivate: [auth_guard_1.AuthGuard] },
     { component: product_component_1.ProductComponent, path: 'product' },
     { component: cart_component_1.CartComponent, path: 'cart' },
+    { component: leave_component_1.LeaveComponent, path: 'leave', canActivate: [auth_guard_1.AuthGuard] },
+    { component: leavelist_component_1.LeavelistComponent, path: 'leaveUser', canActivate: [auth_guard_1.AuthGuard] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
