@@ -12,14 +12,13 @@ var router_1 = require("@angular/router");
 var SidenavComponent = /** @class */ (function () {
     function SidenavComponent(
     // private loadingBar: SlimLoadingBarService,
-    route, 
-    // public AuthService: AuthService,
-    breakpointObserver) {
+    route, breakpointObserver) {
         var _this = this;
         this.route = route;
         this.breakpointObserver = breakpointObserver;
+        this.title = 'ng crm';
         this.user = null;
-        // isMobile: boolean;
+        this.isMobile = false;
         this.mode = "side";
         this.uiContent = "content";
         this.progrssBarClass = "progress-bar";
@@ -35,12 +34,12 @@ var SidenavComponent = /** @class */ (function () {
             console.log(result);
             if (result.matches) {
                 // this.activateHandsetLayout();
-                // this.isMobile = true;
+                _this.isMobile = true;
                 _this.mode = "over";
                 _this.uiContent = "mobile-content";
             }
             else {
-                // this.isMobile = false;
+                _this.isMobile = false;
                 _this.mode = "side";
                 _this.uiContent = "content";
             }
@@ -53,22 +52,19 @@ var SidenavComponent = /** @class */ (function () {
     SidenavComponent.prototype.ngOnChanges = function () {
         console.log(" ngOnChanges");
     };
-    // ngOnInit(): void {
-    //   console.log(" ngOnInit")
-    //   this.user = this.AuthService.getUser();
-    //   this.isloading = false;
-    // }
-    // logout(): void {
-    //   // localStorage.removeItem('currentUser');
-    //   this.AuthService.logout()
-    //   this.route.navigate(['login']);
-    // }
-    // isAuth(isAuth?: any) {
-    //   if (isAuth) {
-    //     this.user = this.authService.getUser()
-    //     // this.user = JSON.parse(localStorage.getItem(APP_USER_PROFILE)) || <User>{};
-    //   }
-    // }
+    SidenavComponent.prototype.ngOnInit = function () {
+        console.log(" ngOnInit");
+        this.isloading = false;
+    };
+    SidenavComponent.prototype.logout = function () {
+        // localStorage.removeItem('currentUser');
+        this.route.navigate(['login']);
+    };
+    SidenavComponent.prototype.isAuth = function (isAuth) {
+        if (isAuth) {
+            // this.user = JSON.parse(localStorage.getItem(APP_USER_PROFILE)) || <User>{};
+        }
+    };
     SidenavComponent.prototype.navigationInterceptor = function (event) {
         if (event instanceof router_1.NavigationStart) {
             this.progrssBarClass = "progress-bar";
@@ -87,12 +83,11 @@ var SidenavComponent = /** @class */ (function () {
             this.isloading = false;
         }
     };
-    // ngOnDestroy() {
-    //   this.breakpointObserver.ngOnDestroy()
-    //   this.authService.logout()
-    //   //   this.router.events
-    //   // this.breakpoint.
-    // }
+    SidenavComponent.prototype.ngOnDestroy = function () {
+        this.breakpointObserver.ngOnDestroy();
+        //   this.router.events
+        // this.breakpoint.
+    };
     SidenavComponent.prototype.ngDoCheck = function () {
         var currentroute = this.route.url;
         var role = sessionStorage.getItem('role');
