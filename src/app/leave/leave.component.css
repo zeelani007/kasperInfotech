@@ -1,0 +1,22 @@
+/* mat-card{
+    width: 50%;
+} */
+/* form{
+
+   flex-wrap: wrap;
+  
+   background-color: saddlebrown;
+}
+.example-form{
+    margin: 10px 20px;
+    justify-content: space-between;  
+}
+
+input{
+   width: 100px;
+} */
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+  }

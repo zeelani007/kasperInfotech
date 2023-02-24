@@ -16,7 +16,7 @@ var LeavelistComponent = /** @class */ (function () {
         this.builder = builder;
         this.service = service;
         this.dialog = dialog;
-        this.displayedColumns = ['username', 'from', 'to', 'name', 'status', 'role', 'action'];
+        this.displayedColumns = ['username', 'name', 'from', 'to', 'reason', 'role', 'action'];
         this.LoadUser();
     }
     LeavelistComponent.prototype.ngAfterViewInit = function () {

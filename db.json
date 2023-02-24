@@ -18,7 +18,7 @@
       "password": "Test@1234",
       "email": "test@test.com",
       "gender": "male",
-      "role": "",
+      "role": "user",
       "isactive": true
     },
     {
@@ -141,27 +141,126 @@
   ],
   "leave": [
     {
-      "id": "afroz123",
+      "id": "11010",
+      "name": "afroz",
+      "fromdate": "2010-10-10",
+      "todate": "2010-11-10",
+      "email": "test@test.com",
+      "reason": "bjhvhvhjvgfxhgv",
+      "role": "Reject"
+    },
+    {
+      "id": "1011",
+      "name": "arjun",
+      "fromdate": "2000-02-22",
+      "todate": "2000-03-22",
+      "email": "as@gmail.com",
+      "reason": "hghhshsh",
+      "role": "Reject"
+    },
+    {
+      "id": "2222",
+      "name": "KASPER",
+      "fromdate": "2000-10-20",
+      "todate": "2000-10-20",
+      "email": "AFR@GMAIL.COM",
+      "reason": "NEED",
+      "role": "Reject"
+    },
+    {
+      "id": "1001",
+      "name": "arjun kumar",
+      "fromdate": "2023-02-23",
+      "todate": "2023-02-25",
+      "email": "tes@re.com",
+      "reason": "emerg",
+      "role": "Reject"
+    },
+    {
+      "id": "10011",
+      "name": "afroz",
+      "fromdate": "2000-02-02",
+      "todate": "2000-03-02",
+      "email": "cb@g.com",
+      "reason": "vchjgvhjdfgvfgvhj`",
+      "role": "Reject"
+    },
+    {
+      "id": "5000",
+      "name": "kasper",
+      "fromdate": "2002-02-01",
+      "todate": "2000-02-02",
+      "email": "test@test.com",
+      "reason": "neeee",
+      "role": "Aproved"
+    },
+    {
+      "id": "1010",
+      "name": "amar",
+      "fromdate": "2000-01-01",
+      "todate": "2000-01-01",
+      "email": "afr@gmail.com",
+      "reason": "nothing",
+      "role": "Aproved"
+    },
+    {
+      "id": "10001",
+      "name": "kasper12",
+      "fromdate": "2001-10-10",
+      "todate": "2001-10-10",
+      "email": "test@test.com",
+      "reason": "sone",
+      "role": "Aproved"
+    },
+    {
+      "id": "20000",
       "name": "afr",
-      "password": "Afroz@123",
-      "email": "afroz@gmail.com",
-      "gender": "male",
-      "role": "user",
-      "isactive": true
+      "fromdate": "2000-10-10",
+      "todate": "2000-02-20",
+      "email": "a@a.com",
+      "reason": "vsdjdsjg",
+      "role": "Aproved"
+    },
+    {
+      "id": "50000",
+      "name": "sachin",
+      "fromdate": "2000-10-10",
+      "todate": "2000-10-10",
+      "email": "dgh@gmail.com",
+      "reason": "hgdhdjhg",
+      "role": "Aproved"
+    },
+    {
+      "id": "50001",
+      "name": "sachin kumar",
+      "fromdate": "2000-10-10",
+      "todate": "2000-10-10",
+      "email": "dgh@gmail.com",
+      "reason": "hgdhdjhg",
+      "role": "Reject"
+    },
+    {
+      "id": "100000",
+      "name": "sachin kumar",
+      "fromdate": "2000-10-10",
+      "todate": "2000-10-10",
+      "email": "dsss@gmail.com",
+      "reason": "ASDFGH",
+      "role": "Reject"
     }
   ],
   "role2": [
     {
-      "code": "user",
-      "name": "User"
+      "code": "Aproved",
+      "name": "Aproved"
     },
     {
-      "code": "tech",
-      "name": "Technician"
+      "code": "Reject",
+      "name": "reject"
     },
     {
       "role": "admin",
       "menu": "Admin"
     }
-  ],
+  ]
 }

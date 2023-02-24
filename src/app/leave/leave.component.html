@@ -3,47 +3,103 @@
         <h2>Leaves</h2>
     </mat-card-header>
     <mat-card-content>
-        <form class="example-form" [formGroup]="registerform" (ngSubmit)="proceedregister()">
-            <mat-form-field class="example-full-width">
-              <mat-label>employee id</mat-label>
+        <form class="grid-container" [formGroup]="registerform" (ngSubmit)="proceedregister()">
+            <mat-form-field class="col-sm-3">
+              <mat-label>User Id</mat-label>
               <input matInput formControlName="id" >
             </mat-form-field>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="col-sm-3">
                 <mat-label>Name</mat-label>
                 <input matInput formControlName="name" >
               </mat-form-field>
-              <!-- <mat-form-field class="example-full-width">
-                <mat-label>Password</mat-label>
-                <input type="password" matInput formControlName="password" >
-              </mat-form-field> -->
-
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="col-sm-3">
                 <mat-label>From Date</mat-label>
                 <input type="date" matInput formControlName="fromdate" >
               </mat-form-field>
-
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="col-sm-3">
                 <mat-label>To Date</mat-label>
                 <input type="date" matInput formControlName="todate" >
               </mat-form-field>
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="col-sm-3">
                 <mat-label>Reason</mat-label>
                 <input matInput formControlName="reason" >
               </mat-form-field>
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="col-sm-3">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email" >
               </mat-form-field>
-              <mat-radio-group formControlName="gender" aria-label="Select an option">
-                <mat-radio-button value="male">Male</mat-radio-button>
-                <mat-radio-button value="female">Female</mat-radio-button>
-              </mat-radio-group>
-              <div>
                 <button mat-raised-button color="primary">Submit</button>
-              
-              </div>
           </form>
     </mat-card-content>
   </mat-card>
+
+  <br><br>
+<!-- list items\ -->
+<mat-card>
+  <mat-card-header>
+      <h2>Leaves Listing</h2>
+  </mat-card-header>
+  <mat-card-content>
+      <div class="mat-elevation-z8">
+          <table mat-table matSort  [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="username">
+              <th mat-header-cell *matHeaderCellDef> UserId </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="from">
+              <th mat-header-cell *matHeaderCellDef> from </th>
+              <td mat-cell *matCellDef="let element"> {{element.fromdate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="to">
+              <th mat-header-cell *matHeaderCellDef> To </th>
+              <td mat-cell *matCellDef="let element"> {{element.todate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="reason">
+              <th mat-header-cell *matHeaderCellDef> Reason </th>
+              <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container  matColumnDef="name">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef> Email </th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <!-- <ng-container matColumnDef="remarks">
+              <th mat-header-cell *matHeaderCellDef> Remarks </th>
+              <td mat-cell *matCellDef="let element"> {{element.remarks}} </td>
+            </ng-container> -->
+            <ng-container matColumnDef="role">
+              <th mat-header-cell *matHeaderCellDef> Aprovel</th>
+              <td mat-cell *matCellDef="let element"> {{element.role ===''? 'Pending...':element.role}} </td>
+            </ng-container>
+            <!-- <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element">  
+                  <button *ngIf="element.role !=='admin'" (click)="updateuser(element.id)" mat-raised-button color="primary">Update</button>
+              </td>
+            </ng-container> -->
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+  </mat-card-content>
+</mat-card>
 
 

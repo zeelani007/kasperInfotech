@@ -314,9 +314,9 @@
   <a *ngIf="isadmin" routerLink="/user">User</a>
   <a routerLink="/customer">Customer</a>
   <a routerLink="/product">Product</a>
-  <a routerLink="/leave">Leave</a>
+  <a routerLink="/leave">Leave Req</a>
 
-  <a routerLink="/leaveUser">Leave Aproved</a>
+  <a *ngIf="isadmin" routerLink="/leaveUser">Leave Aproved</a>
     <div class="spacer"></div>
     
     <a routerLink="/login">Logout</a>

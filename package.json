@@ -25,7 +25,7 @@
     "angular-mat-datepicker": "^0.0.2",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
-    "json-server": "^0.17.1",
+    "json-server": "^0.17.2",
     "ng2-charts": "^4.1.1",
     "ng2-slim-loading-bar-observables": "^1.4.4",
     "ngx-toastr": "^16.0.2",

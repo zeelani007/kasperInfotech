@@ -31,11 +31,13 @@ export class LeavepopupComponent {
   registerform = this.builder.group({
     id: this.builder.control(''),
     name: this.builder.control(''),
-    password: this.builder.control(''),
+    fromdate: this.builder.control(''),
+    todate: this.builder.control(''),
     email: this.builder.control(''),
-    gender: this.builder.control('male'),
+    reason: this.builder.control(''),
+  
     role: this.builder.control('', Validators.required),
-    isactive: this.builder.control(false)
+    // isactive: this.builder.control(false)
   });
 
   loaduserdata(code: any) {
@@ -43,9 +45,15 @@ export class LeavepopupComponent {
       this.editdata = res;
       console.log(this.editdata);
       this.registerform.setValue({
-        id: this.editdata.id, name: this.editdata.name,
-        password: this.editdata.password, email: this.editdata.email, gender: this.editdata.gender,
-        role: this.editdata.role, isactive: this.editdata.isactive
+        id: this.editdata.id, 
+        name: this.editdata.name,
+        fromdate: this.editdata.fromdate,
+         email: this.editdata.email,
+          reason: this.editdata.reason,
+        role: this.editdata.role,
+        todate: this.editdata.todate,
+       
+        //  isactive: this.editdata.isactive,
       });
     });
   }

@@ -1,0 +1,9 @@
+/* .example-form{
+ background: red;
+    width: 50%;
+} */
+mat-card{
+    width: 50%;
+    justify-content: center;
+   
+}

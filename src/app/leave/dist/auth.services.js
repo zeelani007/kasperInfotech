@@ -25,7 +25,7 @@ var AuthService = /** @class */ (function () {
         return this.http.put(this.apiurl + '/' + id, inputdata);
     };
     AuthService.prototype.getuserrole = function () {
-        return this.http.get('http://localhost:3000/role');
+        return this.http.get('  http://localhost:3000/role2');
     };
     AuthService.prototype.isloggedin = function () {
         return sessionStorage.getItem('username') != null;

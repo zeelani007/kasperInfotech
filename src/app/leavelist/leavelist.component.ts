@@ -34,7 +34,7 @@ export class LeavelistComponent {
       this.dataSource.sort = this.sort;
     });
   }
-  displayedColumns: string[] = ['username', 'from', 'to', 'name',   'status', 'role', 'action'];
+  displayedColumns: string[] = ['username','name','from','to','reason', 'role', 'action'];
 
   updateuser(code: any) {
     this.OpenDialog('1000ms', '600ms', code);

@@ -24,7 +24,7 @@ export class AuthService {
     return this.http.put(this.apiurl+'/'+id,inputdata);
   }
   getuserrole(){
-    return this.http.get('http://localhost:3000/role');
+    return this.http.get('  http://localhost:3000/role2');
   }
   isloggedin(){
     return sessionStorage.getItem('username')!=null;

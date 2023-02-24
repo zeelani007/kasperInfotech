@@ -23,11 +23,11 @@ var LeavepopupComponent = /** @class */ (function () {
         this.registerform = this.builder.group({
             id: this.builder.control(''),
             name: this.builder.control(''),
-            password: this.builder.control(''),
+            fromdate: this.builder.control(''),
+            todate: this.builder.control(''),
             email: this.builder.control(''),
-            gender: this.builder.control('male'),
-            role: this.builder.control('', forms_1.Validators.required),
-            isactive: this.builder.control(false)
+            reason: this.builder.control(''),
+            role: this.builder.control('', forms_1.Validators.required)
         });
         this.service.getuserrole().subscribe(function (res) {
             _this.rolelist = res;
@@ -44,9 +44,13 @@ var LeavepopupComponent = /** @class */ (function () {
             _this.editdata = res;
             console.log(_this.editdata);
             _this.registerform.setValue({
-                id: _this.editdata.id, name: _this.editdata.name,
-                password: _this.editdata.password, email: _this.editdata.email, gender: _this.editdata.gender,
-                role: _this.editdata.role, isactive: _this.editdata.isactive
+                id: _this.editdata.id,
+                name: _this.editdata.name,
+                fromdate: _this.editdata.fromdate,
+                email: _this.editdata.email,
+                reason: _this.editdata.reason,
+                role: _this.editdata.role,
+                todate: _this.editdata.todate
             });
         });
     };

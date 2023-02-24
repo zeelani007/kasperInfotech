@@ -1,22 +1,22 @@
-<p>leavepopup works!</p>
-<h1 mat-dialog-title>Update User</h1>
+
+<h1 mat-dialog-title>Update Leaves</h1>
 <form [formGroup]="registerform" (ngSubmit)="UpdateUser()">
     <div mat-dialog-content>
 
         <mat-form-field>
-            <mat-label>Role</mat-label>
+            <mat-label>Aproved</mat-label>
             <mat-select formControlName="role">
-                <mat-option value=''>Select Role</mat-option>
+                <mat-option value=''>Select </mat-option>
                 <mat-option *ngFor="let item of rolelist" [value]="item.code">
                     {{item.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
-        <section class="example-section">
+        <!-- <section class="example-section">
             <br>
             <mat-checkbox  formControlName="isactive" class="example-margin">Is Active</mat-checkbox>
-        </section>
+        </section> -->
 
     </div>
     <div mat-dialog-actions>
