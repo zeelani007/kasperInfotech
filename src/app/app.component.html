@@ -300,6 +300,67 @@
       visibility: hidden;
     }
   }
+
+
+  .navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 </style>
 
 <!-- Toolbar -->
@@ -309,6 +370,9 @@
     alt="Angular Logo"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
   />
+
+
+  <!-- ----------------------------------- -->
   <span>Welcome</span>
   <a routerLink="">Home</a>
   <a *ngIf="isadmin" routerLink="/user">User</a>
@@ -320,14 +384,64 @@
     <div class="spacer"></div>
     
     <a routerLink="/login">Logout</a>
+<!-- ----------- -->
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+  <div class="logo-container">
+      <button class="logo" (click)="toggleCollapse()">A</button>
+      <div class="logo-text" @fadeInOut *ngIf="collapsed">Angular</div>
+      <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+          <i class="fal fa-times close-icon"></i>
+      </button>
+  </div>
+  <div class="scrollwrap scrollwrap_delayed">
+      <ul class="sidenav-nav">
+          <li class="sidenav-nav-item" *ngFor="let data of navData">
+              <a class="sidenav-nav-link" (click)="handleClick(data)"
+                  *ngIf="data.items && data.items.length > 0"
+                  [ngClass]="getActiveClass(data)"
+              >
+                  <i class="sidenav-link-icon" [class]="data.icon"></i>
+                  <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                      {{data.label}}
+                  </span>
+                  <i *ngIf="data.items && collapsed" class="menu-collapse-icon"
+                      [ngClass]="!data.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"
+                  ></i>
+              </a>
+  
+              <a class="sidenav-nav-link" 
+                  *ngIf="!data.items || (data.items && data.items.length === 0)"
+                  [routerLink]="[data.routeLink]" 
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}"
+                  (click)="shrinkItems(data)"
+                  >
+                  <i class="sidenav-link-icon" [class]="data.icon"></i>
+                  <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                      {{data.label}}
+                  </span>
+              </a>
+              <div *ngIf="collapsed && data.items && data.items.length > 0">
+                  <!-- <app-sublevel-menu
+                      [data]="data"
+                      [collapsed]="collapsed"
+                      [multiple]="multiple"
+                      [expanded]="data.expanded"
+                  ></app-sublevel-menu> -->
+              </div>
+          </li>
+      </ul>
+  </div>
 </div>
+
+<!-- -------------- -->
+  </div>
+
 
 <div class="content" style="width: 100%;display: block;" role="main">
-  
 
-</div>
 <router-outlet></router-outlet>
-
+</div>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
