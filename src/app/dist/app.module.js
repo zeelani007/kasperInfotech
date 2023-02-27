@@ -38,6 +38,9 @@ var filter_pipe_1 = require("./shared/filter.pipe");
 var header_component_1 = require("./header/header.component");
 var leave_component_1 = require("./leave/leave.component");
 var datepicker_1 = require("@angular/material/datepicker");
+var leavelist_component_1 = require("./leavelist/leavelist.component");
+var leavepopup_component_1 = require("./leavepopup/leavepopup.component");
+var expansion_1 = require("@angular/material/expansion");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -56,8 +59,9 @@ var AppModule = /** @class */ (function () {
                 product_component_1.ProductComponent,
                 cart_component_1.CartComponent,
                 filter_pipe_1.FilterPipe,
-                leave_component_1.LeaveComponent
-                // DashboardComponent,
+                leave_component_1.LeaveComponent,
+                leavelist_component_1.LeavelistComponent,
+                leavepopup_component_1.LeavepopupComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -77,6 +81,7 @@ var AppModule = /** @class */ (function () {
                 ng2_charts_1.NgChartsModule,
                 forms_1.FormsModule,
                 datepicker_1.MatDatepickerModule,
+                expansion_1.MatExpansionModule,
                 ngx_toastr_1.ToastrModule.forRoot()
             ],
             providers: [],

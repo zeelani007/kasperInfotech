@@ -34,6 +34,14 @@ import { LeaveComponent } from './leave/leave.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { LeavelistComponent } from './leavelist/leavelist.component';
 import { LeavepopupComponent } from './leavepopup/leavepopup.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+
+
+
+
+
+
 
 
 
@@ -53,7 +61,8 @@ import { LeavepopupComponent } from './leavepopup/leavepopup.component';
     FilterPipe,
     LeaveComponent,
     LeavelistComponent,
-    LeavepopupComponent
+    LeavepopupComponent,
+   
    
 
     // DashboardComponent,
@@ -77,6 +86,7 @@ import { LeavepopupComponent } from './leavepopup/leavepopup.component';
     NgChartsModule,
     FormsModule,
     MatDatepickerModule,
+    MatExpansionModule,
     ToastrModule.forRoot()
   ],
   providers: [],
