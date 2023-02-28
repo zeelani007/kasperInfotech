@@ -5,25 +5,44 @@
     <mat-card-content>
         <div class="mat-elevation-z8">
             <button (click)="addcustomer()" mat-raised-button color="primary">Add Customer</button>
+
             <table mat-table matSort  [dataSource]="dataSource">
           
-              <!-- Position Column -->
-              <ng-container matColumnDef="code">
-                <th mat-header-cell *matHeaderCellDef> Code </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-              </ng-container>
-          
-              <!-- Name Column -->
-              <ng-container  matColumnDef="name">
-                <th mat-header-cell mat-sort-header *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-              </ng-container>
-          
-              <!-- Weight Column -->
-              <ng-container matColumnDef="creditlimit">
-                <th mat-header-cell *matHeaderCellDef> Creditlimit </th>
-                <td mat-cell *matCellDef="let element"> {{element.Creditlimit}} </td>
-              </ng-container>
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                  </ng-container>
+            
+                  <!-- Progress Column -->
+                  <ng-container matColumnDef="customerName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                    <td mat-cell *matCellDef="let row"> {{row.CustomerName}}</td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="mobile">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
+                    <td mat-cell *matCellDef="let row"> {{row.mobile}}</td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                    <td mat-cell *matCellDef="let row"> {{row.email}}</td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="adress">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Adress</th>
+                    <td mat-cell *matCellDef="let row"> {{row.adress | date}}</td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+                    <td mat-cell *matCellDef="let row"> {{row.type}}</td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                    <td mat-cell *matCellDef="let row"> {{row.status}}</td>
+                  </ng-container>
           
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> Action </th>
@@ -37,12 +56,11 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
           
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                           showFirstLastButtons
-                           aria-label="Select page of periodic elements">
-            </mat-paginator>
+            
           </div>
     </mat-card-content>
   </mat-card>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
 
 

@@ -54,7 +54,7 @@
       "password": "Test@1234",
       "email": "test@test.com",
       "gender": "male",
-      "role": "user",
+      "role": "admin",
       "isactive": true
     },
     {
@@ -95,8 +95,8 @@
       "name": "Technician"
     },
     {
-      "role": "admin",
-      "menu": "Admin"
+      "code": "admin",
+      "name": "Admin"
     }
   ],
   "menu": [
@@ -255,6 +255,15 @@
       "todate": "2023-02-25",
       "email": "test@test.com",
       "reason": "jhjhhj",
+      "role": "Aproved"
+    },
+    {
+      "id": "221122",
+      "name": "sonu",
+      "fromdate": "2000-05-02",
+      "todate": "2000-06-02",
+      "email": "test@test.com",
+      "reason": "gggghghgh",
       "role": "Aproved"
     }
   ],

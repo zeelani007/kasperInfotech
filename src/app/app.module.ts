@@ -13,7 +13,6 @@ import {MaterialModule} from 'src/material.module';
 import {HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { UpdatepopupComponent } from './updatepopup/updatepopup.component';
-import { CustomerComponent } from './customer/customer.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
@@ -35,6 +34,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { LeavelistComponent } from './leavelist/leavelist.component';
 import { LeavepopupComponent } from './leavepopup/leavepopup.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeformComponent } from './employeeform/employeeform.component';
+import { CustomerComponent } from './customer/customer.component';
+// import { CustomerformComponent } from './customerform/customerform.component';
 
 
 
@@ -54,7 +58,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HomeComponent,
     UserComponent,
     UpdatepopupComponent,
-    CustomerComponent,
     SidenavComponent,
     ProductComponent,
     CartComponent,
@@ -62,6 +65,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
     LeaveComponent,
     LeavelistComponent,
     LeavepopupComponent,
+    EmployeeComponent,
+    EmployeeformComponent,
+    CustomerComponent
+    // CustomerformComponent
+   
+   
    
    
 
@@ -87,6 +96,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     FormsModule,
     MatDatepickerModule,
     MatExpansionModule,
+    MatPaginatorModule,
     ToastrModule.forRoot()
   ],
   providers: [],

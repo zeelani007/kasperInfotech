@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -6,14 +6,27 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
 
+import { MatDialog } from '@angular/material/dialog';
+import { CustomerformComponent } from '../customerform/customerform.component';
+import { CoreService } from '../core.service';
+import { EmployeeService } from '../services/customer.services';
+
+
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class CustomerComponent {
+export class CustomerComponent  {
 
-  constructor(private service: AuthService,private toastr:ToastrService,private router: Router) {
+  constructor(
+    private service: AuthService,
+    private toastr:ToastrService,
+    private router: Router,
+    // private _dialog: MatDialog,
+    // private _empService: EmployeeService,
+    // private _coreService: CoreService
+    ) {
    
     this.SetAccesspermission();
 
@@ -56,8 +69,15 @@ export class CustomerComponent {
 
     });
   }
-  displayedColumns: string[] = ['code', 'name', 'creditlimit', 'action'];
-
+  displayedColumns: string[] = ['id',
+  'customerName',
+  'mobile',
+  'email',
+  'adress',
+  'type',
+  'status',
+  'action',];
+  
   updatecustomer(code: any) {
 
     if(this.haveedit){
@@ -82,5 +102,61 @@ export class CustomerComponent {
    }
   }
 
+  // ngOnInit(): void {
+  //   this.getEmployeeList();
+  // }
+  // openAddEditEmpForm() {
+  //   const dialogRef = this._dialog.open(CustomerformComponent);
+  //   dialogRef.afterClosed().subscribe({
+  //     next: (val) => {
+  //       if (val) {
+  //         this.getEmployeeList();
+  //       }
+  //     },
+  //   });
+  // }
 
+  // getEmployeeList() {
+  //   this._empService.getEmployeeList().subscribe({
+  //     next: (res) => {
+  //       this.dataSource = new MatTableDataSource(res);
+  //       this.dataSource.sort = this.sort;
+  //       this.dataSource.paginator = this.paginator;
+  //     },
+  //     error: console.log,
+  //   });
+  // }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  // deleteEmployee(id: number) {
+  //   this._empService.deleteEmployee(id).subscribe({
+  //     next: (res) => {
+  //       this._coreService.openSnackBar('Employee deleted!', 'done');
+  //       this.getEmployeeList();
+  //     },
+  //     error: console.log,
+  //   });
+  // }
+
+  // openEditForm(data: any) {
+  //   const dialogRef = this._dialog.open(CustomerformComponent, {
+  //     data,
+  //   });
+
+  //   dialogRef.afterClosed().subscribe({
+  //     next: (val) => {
+  //       if (val) {
+  //         this.getEmployeeList();
+  //       }
+  //     },
+  //   });
+  // }
 }

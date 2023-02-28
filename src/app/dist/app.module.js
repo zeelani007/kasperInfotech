@@ -20,7 +20,6 @@ var material_module_1 = require("src/material.module");
 var http_1 = require("@angular/common/http");
 var ngx_toastr_1 = require("ngx-toastr");
 var updatepopup_component_1 = require("./updatepopup/updatepopup.component");
-var customer_component_1 = require("./customer/customer.component");
 var icon_1 = require("@angular/material/icon");
 var list_1 = require("@angular/material/list");
 var menu_1 = require("@angular/material/menu");
@@ -41,6 +40,11 @@ var datepicker_1 = require("@angular/material/datepicker");
 var leavelist_component_1 = require("./leavelist/leavelist.component");
 var leavepopup_component_1 = require("./leavepopup/leavepopup.component");
 var expansion_1 = require("@angular/material/expansion");
+var paginator_1 = require("@angular/material/paginator");
+var employee_component_1 = require("./employee/employee.component");
+var employeeform_component_1 = require("./employeeform/employeeform.component");
+var customer_component_1 = require("./customer/customer.component");
+// import { CustomerformComponent } from './customerform/customerform.component';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -54,7 +58,6 @@ var AppModule = /** @class */ (function () {
                 home_component_1.HomeComponent,
                 user_component_1.UserComponent,
                 updatepopup_component_1.UpdatepopupComponent,
-                customer_component_1.CustomerComponent,
                 sidenav_component_1.SidenavComponent,
                 product_component_1.ProductComponent,
                 cart_component_1.CartComponent,
@@ -62,6 +65,11 @@ var AppModule = /** @class */ (function () {
                 leave_component_1.LeaveComponent,
                 leavelist_component_1.LeavelistComponent,
                 leavepopup_component_1.LeavepopupComponent,
+                employee_component_1.EmployeeComponent,
+                employeeform_component_1.EmployeeformComponent,
+                customer_component_1.CustomerComponent
+                // CustomerformComponent
+                // DashboardComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -82,6 +90,7 @@ var AppModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 datepicker_1.MatDatepickerModule,
                 expansion_1.MatExpansionModule,
+                paginator_1.MatPaginatorModule,
                 ngx_toastr_1.ToastrModule.forRoot()
             ],
             providers: [],
