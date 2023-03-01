@@ -1,102 +1,175 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
 
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-// import { EmpAddEditComponent } from '../emp-add-edit/emp-add-edit.component';
-import { EmployeeformComponent } from '../employeeform/employeeform.component';
-import { ViewChild} from '@angular/core';
-import { CoreService } from '../core.service';
-import { EmployeeService } from '../services/employee.services';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Employee } from '../model/employee.model';
+import { EmployeeService } from '../employee/employee.service';
+
+
+
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css']
 })
-export class EmployeeComponent implements OnInit {
-  displayedColumns: string[] = [
-    'id',
-    'firstName',
-    'lastName',
-    'email',
-    'dob',
-    'gender',
-    'Profile',
-    'company',
-    'experience',
-    // 'package',
-    'action',
-  ];
-  dataSource!: MatTableDataSource<any>;
+export class EmployeeComponent implements OnInit, AfterViewInit {
+  @ViewChild('fileInput') fileInput: any;
+  @ViewChild('addEmployeeButton') addEmployeeButton: any;
+ 
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  employeeForm: FormGroup;
+
+  employees: Employee[];
+  employeesToDisplay: Employee[];
+  educationOptions = [
+    '10th pass',
+    'diploma',
+    'graduate',
+    'post graduate',
+    'PhD',
+  ];
 
   constructor(
-    private _dialog: MatDialog,
-    private _empService: EmployeeService,
-    private _coreService: CoreService
-  ) {}
-
+    private fb: FormBuilder,
+    private employeeService: EmployeeService
+  ) {
+    this.employeeForm = fb.group({});
+    this.employees = [];
+    this.employeesToDisplay = this.employees;
+  }
 
   ngOnInit(): void {
-    this.getEmployeeList();
-  }
-  openAddEditEmpForm() {
-    const dialogRef = this._dialog.open(EmployeeformComponent);
-    dialogRef.afterClosed().subscribe({
-      next: (val) => {
-        if (val) {
-          this.getEmployeeList();
-        }
-      },
+    this.employeeForm = this.fb.group({
+      firstname: this.fb.control(''),
+      lastname: this.fb.control(''),
+      birthday: this.fb.control(''),
+      gender: this.fb.control(''),
+      education: this.fb.control('default'),
+      company: this.fb.control(''),
+      jobExperience: this.fb.control(''),
+      salary: this.fb.control(''),
+    });
+
+    this.employeeService.getEmployees().subscribe((res) => {
+      for (let emp of res) {
+        this.employees.unshift(emp);
+      }
+      this.employeesToDisplay = this.employees;
     });
   }
 
-  getEmployeeList() {
-    this._empService.getEmployeeList().subscribe({
-      next: (res) => {
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-      },
-      error: console.log,
+  ngAfterViewInit(): void {
+    //this.buttontemp.nativeElement.click();
+  }
+
+  addEmployee() {
+    let employee: Employee = {
+      firstname: this.FirstName.value,
+      lastname: this.LastName.value,
+      birthdate: this.BirthDay.value,
+      gender: this.Gender.value,
+      education: this.educationOptions[parseInt(this.Education.value)],
+      company: this.Company.value,
+      jobExperience: this.JobExperience.value,
+      salary: this.Salary.value,
+      profile: this.fileInput.nativeElement.files[0]?.name,
+    };
+    this.employeeService.postEmployee(employee).subscribe((res) => {
+      this.employees.unshift(res);
+      this.clearForm();
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  removeEmployee(event: any) {
+    this.employees.forEach((val, index) => {
+      if (val.id === parseInt(event)) {
+        this.employeeService.deleteEmployee(event).subscribe((res) => {
+          this.employees.splice(index, 1);
+        });
+      }
+    });
+  }
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+  editEmployee(event: any) {
+    this.employees.forEach((val, ind) => {
+      if (val.id === event) {
+        this.setForm(val);
+      }
+    });
+    this.removeEmployee(event);
+    this.addEmployeeButton.nativeElement.click();
+  }
+
+  setForm(emp: Employee) {
+    this.FirstName.setValue(emp.firstname);
+    this.LastName.setValue(emp.lastname);
+    this.BirthDay.setValue(emp.birthdate);
+    this.Gender.setValue(emp.gender);
+
+    let educationIndex = 0;
+    this.educationOptions.forEach((val, index) => {
+      if (val === emp.education) educationIndex = index;
+    });
+    this.Education.setValue(educationIndex);
+
+    this.Company.setValue(emp.company);
+    this.JobExperience.setValue(emp.jobExperience);
+    this.Salary.setValue(emp.salary);
+    this.fileInput.nativeElement.value = '';
+  }
+
+  searchEmployees(event: any) {
+    let filteredEmployees: Employee[] = [];
+
+    if (event === '') {
+      this.employeesToDisplay = this.employees;
+    } else {
+      filteredEmployees = this.employees.filter((val, index) => {
+        let targetKey = val.firstname.toLowerCase() + '' + val.lastname.toLowerCase();
+        let searchKey = event.toLowerCase();
+        return targetKey.includes(searchKey);
+      });
+      this.employeesToDisplay = filteredEmployees;
     }
   }
 
-  deleteEmployee(id: number) {
-    this._empService.deleteEmployee(id).subscribe({
-      next: (res) => {
-        this._coreService.openSnackBar('Employee deleted!', 'done');
-        this.getEmployeeList();
-      },
-      error: console.log,
-    });
+  clearForm() {
+    this.FirstName.setValue('');
+    this.LastName.setValue('');
+    this.BirthDay.setValue('');
+    this.Gender.setValue('');
+    this.Education.setValue('');
+    this.Company.setValue('');
+    this.JobExperience.setValue('');
+    this.Salary.setValue('');
+    this.fileInput.nativeElement.value = '';
   }
 
-  openEditForm(data: any) {
-    const dialogRef = this._dialog.open(EmployeeformComponent, {
-      data,
-    });
-
-    dialogRef.afterClosed().subscribe({
-      next: (val) => {
-        if (val) {
-          this.getEmployeeList();
-        }
-      },
-    });
+  public get FirstName(): FormControl {
+    return this.employeeForm.get('firstname') as FormControl;
   }
+  public get LastName(): FormControl {
+    return this.employeeForm.get('lastname') as FormControl;
+  }
+  public get BirthDay(): FormControl {
+    return this.employeeForm.get('birthday') as FormControl;
+  }
+  public get Gender(): FormControl {
+    return this.employeeForm.get('gender') as FormControl;
+  }
+  public get Education(): FormControl {
+    return this.employeeForm.get('education') as FormControl;
+  }
+  public get Company(): FormControl {
+    return this.employeeForm.get('company') as FormControl;
+  }
+  public get JobExperience(): FormControl {
+    return this.employeeForm.get('jobExperience') as FormControl;
+  }
+  public get Salary(): FormControl {
+    return this.employeeForm.get('salary') as FormControl;
+  }
+// 
+
+
 }
-

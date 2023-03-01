@@ -83,6 +83,15 @@
       "gender": "male",
       "role": "",
       "isactive": false
+    },
+    {
+      "id": "utkarsh",
+      "name": "utkarsh",
+      "password": "Test@1234",
+      "email": "test@test.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
     }
   ],
   "role": [
@@ -280,5 +289,35 @@
       "role": "admin",
       "menu": "Admin"
     }
-  ]
+  ],
+  "profile": [
+    {
+      "firstname": "Afroz",
+      "lastname": "Zeelani",
+      "birthdate": "2000-01-10",
+      "gender": "m",
+      "education": "post graduate",
+      "company": "Kasper",
+      "jobExperience": 2,
+      "salary": 5,
+      "profile": "Profile-01.jpg",
+      "id": 1
+    },
+    {
+      "firstname": "Amar",
+      "lastname": "kumar",
+      "birthdate": "2000-01-10",
+      "gender": "m",
+      "education": "post graduate",
+      "company": "Kasper",
+      "jobExperience": 5,
+      "salary": 10,
+      "profile": "Profile-02.jpg",
+      "id": 2
+    }
+  ],
+  "comments": [],
+  "post": {
+    "name": "typicode"
+  }
 }

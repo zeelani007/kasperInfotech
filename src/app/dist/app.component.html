@@ -388,6 +388,7 @@
                   </a>
               </mat-nav-list>
           </mat-expansion-panel>
+
           <mat-expansion-panel [class.mat-elevation-z0]="true">
               <mat-expansion-panel-header>
                   Leave Report
@@ -396,16 +397,40 @@
                   <a mat-list-item routerLink="/leave">Leave Req</a>
                   <a mat-list-item *ngIf="isadmin" routerLink="/leaveUser">Leave Aprovel</a>
                   <!-- <a mat-list-item routerLink="#">Struts</a> -->
-              </mat-nav-list>
-              
+              </mat-nav-list> 
           </mat-expansion-panel>
-          <mat-list-item *ngIf="isadmin" routerLink="/user">
-            <mat-icon>person</mat-icon><span>User</span>
-        </mat-list-item>
-        <mat-list-item *ngIf="isadmin" routerLink="/employee">
+
+        
+
+        <!-- <mat-list-item *ngIf="isadmin" routerLink="/employee">
           <mat-icon>person</mat-icon><span>Employee</span>
       </mat-list-item>
+       -->
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          Employee
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a mat-list-item routerLink="/employee">Add Employee</a>
+            <a mat-list-item *ngIf="isadmin" routerLink="/emplist">Employee List</a>
+            <!-- <a mat-list-item routerLink="#">Struts</a> -->
+        </mat-nav-list> 
+    </mat-expansion-panel>
+
       </mat-nav-list>
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          Products
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a mat-list-item routerLink="/store">store</a>
+            <a mat-list-item *ngIf="isadmin" routerLink="/cart">Cart</a>
+            <!-- <a mat-list-item routerLink="#">Struts</a> -->
+        </mat-nav-list> 
+    </mat-expansion-panel>
+    <mat-list-item *ngIf="isadmin" routerLink="/user">
+      <mat-icon>person</mat-icon><span>User</span>
+  </mat-list-item>
   </mat-sidenav>
   
   <router-outlet>     

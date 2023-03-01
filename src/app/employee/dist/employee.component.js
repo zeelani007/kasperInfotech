@@ -7,92 +7,186 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 var core_1 = require("@angular/core");
-var paginator_1 = require("@angular/material/paginator");
-var sort_1 = require("@angular/material/sort");
-var table_1 = require("@angular/material/table");
-// import { EmpAddEditComponent } from '../emp-add-edit/emp-add-edit.component';
-var employeeform_component_1 = require("../employeeform/employeeform.component");
-var core_2 = require("@angular/core");
 var EmployeeComponent = /** @class */ (function () {
-    function EmployeeComponent(_dialog, _empService, _coreService) {
-        this._dialog = _dialog;
-        this._empService = _empService;
-        this._coreService = _coreService;
-        this.displayedColumns = [
-            'id',
-            'firstName',
-            'lastName',
-            'email',
-            'dob',
-            'gender',
-            'Profile',
-            'company',
-            'experience',
-            // 'package',
-            'action',
+    function EmployeeComponent(fb, employeeService) {
+        this.fb = fb;
+        this.employeeService = employeeService;
+        this.educationOptions = [
+            '10th pass',
+            'diploma',
+            'graduate',
+            'post graduate',
+            'PhD',
         ];
+        this.employeeForm = fb.group({});
+        this.employees = [];
+        this.employeesToDisplay = this.employees;
     }
     EmployeeComponent.prototype.ngOnInit = function () {
-        this.getEmployeeList();
-    };
-    EmployeeComponent.prototype.openAddEditEmpForm = function () {
         var _this = this;
-        var dialogRef = this._dialog.open(employeeform_component_1.EmployeeformComponent);
-        dialogRef.afterClosed().subscribe({
-            next: function (val) {
-                if (val) {
-                    _this.getEmployeeList();
-                }
+        this.employeeForm = this.fb.group({
+            firstname: this.fb.control(''),
+            lastname: this.fb.control(''),
+            birthday: this.fb.control(''),
+            gender: this.fb.control(''),
+            education: this.fb.control('default'),
+            company: this.fb.control(''),
+            jobExperience: this.fb.control(''),
+            salary: this.fb.control('')
+        });
+        this.employeeService.getEmployees().subscribe(function (res) {
+            for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
+                var emp = res_1[_i];
+                _this.employees.unshift(emp);
+            }
+            _this.employeesToDisplay = _this.employees;
+        });
+    };
+    EmployeeComponent.prototype.ngAfterViewInit = function () {
+        //this.buttontemp.nativeElement.click();
+    };
+    EmployeeComponent.prototype.addEmployee = function () {
+        var _this = this;
+        var _a;
+        var employee = {
+            firstname: this.FirstName.value,
+            lastname: this.LastName.value,
+            birthdate: this.BirthDay.value,
+            gender: this.Gender.value,
+            education: this.educationOptions[parseInt(this.Education.value)],
+            company: this.Company.value,
+            jobExperience: this.JobExperience.value,
+            salary: this.Salary.value,
+            profile: (_a = this.fileInput.nativeElement.files[0]) === null || _a === void 0 ? void 0 : _a.name
+        };
+        this.employeeService.postEmployee(employee).subscribe(function (res) {
+            _this.employees.unshift(res);
+            _this.clearForm();
+        });
+    };
+    EmployeeComponent.prototype.removeEmployee = function (event) {
+        var _this = this;
+        this.employees.forEach(function (val, index) {
+            if (val.id === parseInt(event)) {
+                _this.employeeService.deleteEmployee(event).subscribe(function (res) {
+                    _this.employees.splice(index, 1);
+                });
             }
         });
     };
-    EmployeeComponent.prototype.getEmployeeList = function () {
+    EmployeeComponent.prototype.editEmployee = function (event) {
         var _this = this;
-        this._empService.getEmployeeList().subscribe({
-            next: function (res) {
-                _this.dataSource = new table_1.MatTableDataSource(res);
-                _this.dataSource.sort = _this.sort;
-                _this.dataSource.paginator = _this.paginator;
-            },
-            error: console.log
+        this.employees.forEach(function (val, ind) {
+            if (val.id === event) {
+                _this.setForm(val);
+            }
         });
+        this.removeEmployee(event);
+        this.addEmployeeButton.nativeElement.click();
     };
-    EmployeeComponent.prototype.applyFilter = function (event) {
-        var filterValue = event.target.value;
-        this.dataSource.filter = filterValue.trim().toLowerCase();
-        if (this.dataSource.paginator) {
-            this.dataSource.paginator.firstPage();
+    EmployeeComponent.prototype.setForm = function (emp) {
+        this.FirstName.setValue(emp.firstname);
+        this.LastName.setValue(emp.lastname);
+        this.BirthDay.setValue(emp.birthdate);
+        this.Gender.setValue(emp.gender);
+        var educationIndex = 0;
+        this.educationOptions.forEach(function (val, index) {
+            if (val === emp.education)
+                educationIndex = index;
+        });
+        this.Education.setValue(educationIndex);
+        this.Company.setValue(emp.company);
+        this.JobExperience.setValue(emp.jobExperience);
+        this.Salary.setValue(emp.salary);
+        this.fileInput.nativeElement.value = '';
+    };
+    EmployeeComponent.prototype.searchEmployees = function (event) {
+        var filteredEmployees = [];
+        if (event === '') {
+            this.employeesToDisplay = this.employees;
+        }
+        else {
+            filteredEmployees = this.employees.filter(function (val, index) {
+                var targetKey = val.firstname.toLowerCase() + '' + val.lastname.toLowerCase();
+                var searchKey = event.toLowerCase();
+                return targetKey.includes(searchKey);
+            });
+            this.employeesToDisplay = filteredEmployees;
         }
     };
-    EmployeeComponent.prototype.deleteEmployee = function (id) {
-        var _this = this;
-        this._empService.deleteEmployee(id).subscribe({
-            next: function (res) {
-                _this._coreService.openSnackBar('Employee deleted!', 'done');
-                _this.getEmployeeList();
-            },
-            error: console.log
-        });
+    EmployeeComponent.prototype.clearForm = function () {
+        this.FirstName.setValue('');
+        this.LastName.setValue('');
+        this.BirthDay.setValue('');
+        this.Gender.setValue('');
+        this.Education.setValue('');
+        this.Company.setValue('');
+        this.JobExperience.setValue('');
+        this.Salary.setValue('');
+        this.fileInput.nativeElement.value = '';
     };
-    EmployeeComponent.prototype.openEditForm = function (data) {
-        var _this = this;
-        var dialogRef = this._dialog.open(employeeform_component_1.EmployeeformComponent, {
-            data: data
-        });
-        dialogRef.afterClosed().subscribe({
-            next: function (val) {
-                if (val) {
-                    _this.getEmployeeList();
-                }
-            }
-        });
-    };
+    Object.defineProperty(EmployeeComponent.prototype, "FirstName", {
+        get: function () {
+            return this.employeeForm.get('firstname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EmployeeComponent.prototype, "LastName", {
+        get: function () {
+            return this.employeeForm.get('lastname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EmployeeComponent.prototype, "BirthDay", {
+        get: function () {
+            return this.employeeForm.get('birthday');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EmployeeComponent.prototype, "Gender", {
+        get: function () {
+            return this.employeeForm.get('gender');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EmployeeComponent.prototype, "Education", {
+        get: function () {
+            return this.employeeForm.get('education');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EmployeeComponent.prototype, "Company", {
+        get: function () {
+            return this.employeeForm.get('company');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EmployeeComponent.prototype, "JobExperience", {
+        get: function () {
+            return this.employeeForm.get('jobExperience');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EmployeeComponent.prototype, "Salary", {
+        get: function () {
+            return this.employeeForm.get('salary');
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
-        core_2.ViewChild(paginator_1.MatPaginator)
-    ], EmployeeComponent.prototype, "paginator");
+        core_1.ViewChild('fileInput')
+    ], EmployeeComponent.prototype, "fileInput");
     __decorate([
-        core_2.ViewChild(sort_1.MatSort)
-    ], EmployeeComponent.prototype, "sort");
+        core_1.ViewChild('addEmployeeButton')
+    ], EmployeeComponent.prototype, "addEmployeeButton");
     EmployeeComponent = __decorate([
         core_1.Component({
             selector: 'app-employee',

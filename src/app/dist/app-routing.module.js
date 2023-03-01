@@ -20,19 +20,20 @@ var leave_component_1 = require("./leave/leave.component");
 var leavelist_component_1 = require("./leavelist/leavelist.component");
 var employee_component_1 = require("./employee/employee.component");
 var customer_component_1 = require("./customer/customer.component");
+var employeeform_component_1 = require("./employeeform/employeeform.component");
 var routes = [
     { component: login_component_1.LoginComponent, path: 'login' },
     { component: register_component_1.RegisterComponent, path: 'register' },
     { component: home_component_1.HomeComponent, path: '', canActivate: [auth_guard_1.AuthGuard] },
     { component: user_component_1.UserComponent, path: 'user', canActivate: [auth_guard_1.AuthGuard] },
     { component: sidenav_component_1.SidenavComponent, path: 'sidebar', canActivate: [auth_guard_1.AuthGuard] },
-    { component: product_component_1.ProductComponent, path: 'product' },
+    { component: product_component_1.ProductComponent, path: 'store' },
     { component: cart_component_1.CartComponent, path: 'cart' },
     { component: leave_component_1.LeaveComponent, path: 'leave', canActivate: [auth_guard_1.AuthGuard] },
     { component: leavelist_component_1.LeavelistComponent, path: 'leaveUser', canActivate: [auth_guard_1.AuthGuard] },
     { component: customer_component_1.CustomerComponent, path: 'customers' },
-    //  {component:CustomerformComponent,path:'customer'},
     { component: employee_component_1.EmployeeComponent, path: 'employee' },
+    { component: employeeform_component_1.EmployeeformComponent, path: 'emplist' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

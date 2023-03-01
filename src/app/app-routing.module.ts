@@ -15,7 +15,7 @@ import { LeavepopupComponent } from './leavepopup/leavepopup.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerformComponent } from './customerform/customerform.component';
-
+import { EmployeeformComponent } from './employeeform/employeeform.component';
 const routes: Routes = [
  {component:LoginComponent,path:'login'},
  {component:RegisterComponent,path:'register'},
@@ -23,15 +23,15 @@ const routes: Routes = [
  {component:UserComponent,path:'user',canActivate:[AuthGuard]},
 
  {component:SidenavComponent,path:'sidebar',canActivate:[AuthGuard]},
- {component:ProductComponent,path:'product'},
+ {component:ProductComponent,path:'store'},
  {component:CartComponent,path:'cart'},
  {component:LeaveComponent,path:'leave',canActivate:[AuthGuard]},
  {component:LeavelistComponent,path:'leaveUser',canActivate:[AuthGuard]},
  {component:CustomerComponent,path:'customers'},
-//  {component:CustomerformComponent,path:'customer'},
+
 
 {component:EmployeeComponent,path:'employee'},
-//  {path:'products', component: ProductComponent},
+{component:EmployeeformComponent,path:'emplist'},
 
 ];
 
