@@ -18,7 +18,7 @@
       "password": "Test@1234",
       "email": "test@test.com",
       "gender": "male",
-      "role": "user",
+      "role": "admin",
       "isactive": true
     },
     {
@@ -304,6 +304,18 @@
       "id": 1
     },
     {
+      "firstname": "Arjun",
+      "lastname": "kumar",
+      "birthdate": "2000-01-10",
+      "gender": "m",
+      "education": "post graduate",
+      "company": "Kasper",
+      "jobExperience": 5,
+      "salary": 10,
+      "profile": "Profile-03.jpg",
+      "id": 2
+    },
+    {
       "firstname": "Amar",
       "lastname": "kumar",
       "birthdate": "2000-01-10",
@@ -313,7 +325,7 @@
       "jobExperience": 5,
       "salary": 10,
       "profile": "Profile-02.jpg",
-      "id": 2
+      "id": 3
     }
   ],
   "comments": [],
