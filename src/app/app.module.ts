@@ -38,7 +38,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeformComponent } from './employeeform/employeeform.component';
 import { CustomerComponent } from './customer/customer.component';
+import { AttedancdanceComponent } from './attedancdance/attedancdance.component';
 // import { CustomerformComponent } from './customerform/customerform.component';
+
 
 
 
@@ -67,7 +69,8 @@ import { CustomerComponent } from './customer/customer.component';
     LeavepopupComponent,
     EmployeeComponent,
     EmployeeformComponent,
-    CustomerComponent
+    CustomerComponent,
+    AttedancdanceComponent
     // CustomerformComponent
    
    

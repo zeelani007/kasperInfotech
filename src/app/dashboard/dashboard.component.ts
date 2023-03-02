@@ -59,6 +59,7 @@ export class DashboardComponent implements OnInit {
       icon: "account_circle",
       title: "User Registrations",
       subtitle: "68",
+     
     },
 
     {

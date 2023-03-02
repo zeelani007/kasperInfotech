@@ -428,6 +428,16 @@
             <!-- <a mat-list-item routerLink="#">Struts</a> -->
         </mat-nav-list> 
     </mat-expansion-panel>
+
+    <mat-expansion-panel [class.mat-elevation-z0]="true">
+      <mat-expansion-panel-header>
+        Attedancdance
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+          <a mat-list-item routerLink="/attend">Present</a>
+      </mat-nav-list> 
+  </mat-expansion-panel>
+    
     <mat-list-item *ngIf="isadmin" routerLink="/user">
       <mat-icon>person</mat-icon><span>User</span>
   </mat-list-item>

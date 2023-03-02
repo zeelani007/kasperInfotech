@@ -16,6 +16,10 @@ import { EmployeeComponent } from './employee/employee.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerformComponent } from './customerform/customerform.component';
 import { EmployeeformComponent } from './employeeform/employeeform.component';
+
+
+import { AttedancdanceComponent } from './attedancdance/attedancdance.component';
+
 const routes: Routes = [
  {component:LoginComponent,path:'login'},
  {component:RegisterComponent,path:'register'},
@@ -29,10 +33,13 @@ const routes: Routes = [
  {component:LeavelistComponent,path:'leaveUser',canActivate:[AuthGuard]},
  {component:CustomerComponent,path:'customers'},
 
-
+// =======start employee routing ======
 {component:EmployeeComponent,path:'employee'},
 {component:EmployeeformComponent,path:'emplist'},
+// =======end employee routing ======
+{component:AttedancdanceComponent,path:'attend'},
 
+// 
 ];
 
 @NgModule({

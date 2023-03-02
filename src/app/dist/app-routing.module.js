@@ -21,6 +21,7 @@ var leavelist_component_1 = require("./leavelist/leavelist.component");
 var employee_component_1 = require("./employee/employee.component");
 var customer_component_1 = require("./customer/customer.component");
 var employeeform_component_1 = require("./employeeform/employeeform.component");
+var attedancdance_component_1 = require("./attedancdance/attedancdance.component");
 var routes = [
     { component: login_component_1.LoginComponent, path: 'login' },
     { component: register_component_1.RegisterComponent, path: 'register' },
@@ -32,8 +33,11 @@ var routes = [
     { component: leave_component_1.LeaveComponent, path: 'leave', canActivate: [auth_guard_1.AuthGuard] },
     { component: leavelist_component_1.LeavelistComponent, path: 'leaveUser', canActivate: [auth_guard_1.AuthGuard] },
     { component: customer_component_1.CustomerComponent, path: 'customers' },
+    // =======start employee routing ======
     { component: employee_component_1.EmployeeComponent, path: 'employee' },
     { component: employeeform_component_1.EmployeeformComponent, path: 'emplist' },
+    // =======end employee routing ======
+    { component: attedancdance_component_1.AttedancdanceComponent, path: 'attend' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
