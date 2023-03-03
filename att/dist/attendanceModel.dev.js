@@ -2,13 +2,28 @@
 
 var attendance = angular.module("attendanceModel", []);
 attendance.controller("attendanceTaker", function ($scope) {
-  var students = [{
+  var student = [{
+    name: "afroz",
+    reg: "1234567890",
+    roll: "1",
+    attendance: "p"
+  }, {
+    name: "afroz",
+    reg: "1234567890",
+    roll: "1",
+    attendance: "p"
+  }, {
+    name: "afroz",
+    reg: "1234567890",
+    roll: "1",
+    attendance: "p"
+  }, {
     name: "afroz",
     reg: "1234567890",
     roll: "1",
     attendance: "p"
   }];
-  $scope.students = students;
+  $scope.student = students;
   $scope.id = "0";
   var attendance = "p";
   var total = students.length;
@@ -47,4 +62,4 @@ attendance.controller("attendanceTaker", function ($scope) {
     alert("form submited");
   };
 });
-//# sourceMappingURL=script.dev.js.map
+//# sourceMappingURL=attendanceModel.dev.js.map

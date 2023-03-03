@@ -31,20 +31,5 @@ attendance.controller("attendanceTaker", function ($scope) {
   $scope.getClass = function (reg) {
     if (attendance = "a") return id == reg ? "absent" : "false";else return id == reg ? "present" : "false";
   };
-
-  $scope.totalCount = function () {
-    var count = angular.element(document.querySelectorAll(".absentmsrked"));
-    a = count.length;
-    $scope.p = p - a;
-    $scope.a = a;
-  };
-
-  $scope.total = total;
-  $scope.p = p;
-  $scope.a = a;
-
-  $scope.submitForm = function () {
-    alert("form submited");
-  };
 });
 //# sourceMappingURL=script.dev.js.map

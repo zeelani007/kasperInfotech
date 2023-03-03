@@ -1,5 +1,3 @@
-
-    
 var attendance =angular.module ("attendanceModel",[]);
 
 attendance.controller ("attendanceTaker",function($scope){
@@ -43,7 +41,7 @@ $scope.totalCount=()=>{
     $scope.a=a;
 };
     $scope.total=total;
-    $scope.p=p;
+    $scope.p=a;
     $scope.a=a;
 
     $scope.submitForm=()=>{

@@ -40,11 +40,11 @@ attendance.controller("attendanceTaker", function ($scope) {
   };
 
   $scope.total = total;
-  $scope.p = p;
+  $scope.p = a;
   $scope.a = a;
 
   $scope.submitForm = function () {
     alert("form submited");
   };
 });
-//# sourceMappingURL=script.dev.js.map
+//# sourceMappingURL=attendanceModel.dev.js.map

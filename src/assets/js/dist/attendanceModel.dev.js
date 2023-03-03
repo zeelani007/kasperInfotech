@@ -47,4 +47,4 @@ attendance.controller("attendanceTaker", function ($scope) {
     alert("form submited");
   };
 });
-//# sourceMappingURL=script.dev.js.map
+//# sourceMappingURL=attendanceModel.dev.js.map

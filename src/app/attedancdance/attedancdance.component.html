@@ -1,15 +1,58 @@
 
+<div ng-controller="attendanceTaker">
+    <table>
+       <thead>
+        <h2>Attendance</h2>
+       </thead>
+    
+    <tr>
+        <th>Sl.no</th>
+        <th>Name</th>
+        <th>Emp Id</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Attendance</th>
+    </tr>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>attedancdance works!</p>  
-    <h1>afrozzeelani</h1>
-</body>
-</html>
+    <tr>
+        <td>1</td>
+        <td>afroz</td>
+        <td>12345</td>
+        <td>afroz@az.com</td>
+        <td>01-01-2020</td>
+        <td>10:10:00</td>
+        <td><select><option value="">present</option>
+            <option value="">Absent</option>
+        </select></td>
+    </tr>
+    <!-- <tr ng-repeat="student in students"
+    ng-class="getClass(student.reg)"
+    class="row"
+    id="{{student.reg}}"
+    >
+        
+        <td>{{$index+1}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.reg}}</td>
+        <td>{{student.roll}}</td>
+        <td>
+            <select ng-model="student.attendance"
+            ng-click="getId(student.reg,$index)"
+            ng-mouseleave="totalCount()">
+                <option value="p">present</option>
+                <option value="a">absent</option>
+            </select>
+        </td>
+    </tr>
+    </table>
+    <div>
+        <h5>total count : {{total}}} </h5>
+    </div>
+    <div>
+        <h5>present:{{p}}</h5>
+        <h5>absent:{{a}}</h5>
+    </div> -->
+<button ng-click="submitForm">submit</button>
+
+  

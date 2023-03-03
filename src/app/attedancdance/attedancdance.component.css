@@ -1,0 +1,24 @@
+/* body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: aquamarine;
+} */
+
+table{
+    border-collapse: collapse;
+   
+}
+table th, table td{
+    border:1px solid black;
+    padding: 10px 20px;
+}
+table th{
+    background: rgb(216, 139, 139);
+}
+thead{
+    font-size:200px;
+    text-align: center;
+    justify-content: center;
+}

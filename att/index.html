@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="attendanceModel">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="angular.min.js"></script>
+</head>
+<style>
+    table{
+    border-collapse: collapse;
+}
+table th, table td{
+    border:1px solid black;
+    padding: 18px 20px;
+}
+.present{
+    background-color: green;
+}
+.absent{
+    background-color: red;
+}
+.row{
+    background: rgb(rgb(66, 49, 49));
+}
+</style>
+<body ng-controller="attendanceTaker">
+    <table>
+        <thead>attedance </thead>
+    
+    <tr>
+        <th>sr.no</th>
+        <th>Name</th>
+        <th>Reg.no</th>
+        <th>roll no</th>
+        <th>attendance</th>
+    </tr>
+    <tr ng-repeat="student in students" ng-class="getClass(student.reg)"class="row"id="{{student.reg}}">
+        
+        <td>{{$index+1}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.reg}}</td>
+        <td>{{student.roll}}</td>
+        <td>
+            <select ng-model="student.attendance   ">
+                <option value="p">present</option>
+                <option value="a">absent</option>
+            </select>
+        </td>
+    </tr>
+    </table>
+    <div>
+        <h5>total count : {{total}}} </h5>
+    </div>
+    <div>
+        <h5>present:{{p}}</h5>
+        <h5>absent:{{a}}</h5>
+    </div>
+
+    <script src="attendanceModel.js"></script>
+</body>
+</html>
